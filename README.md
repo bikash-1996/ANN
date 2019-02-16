@@ -73,7 +73,7 @@ X[:, 2] = labelencoder_X_1.fit_transform(X[:, 2])
 print(X)
 
 
-Now creating Dummy variables using :- "OneHotEncoder"
+        ######################### Now creating Dummy variables using :- "OneHotEncoder" ########################
 
 onehotencoder = OneHotEncoder(categorical_features = [1])
 X = onehotencoder.fit_transform(X).toarray()
@@ -92,11 +92,12 @@ print(X)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
  ###################################### As class imbalance is there, we will upsample the minority class ############################
- 
- def makeOverSamplesSMOTE(X,y):
- #input DataFrame
+  #input DataFrame
  #X →Independent Variable in DataFrame\
  #y →dependent Variable in Pandas DataFrame format
+ 
+ def makeOverSamplesSMOTE(X,y):
+
  from imblearn.over_sampling import SMOTE
  sm = SMOTE()
  X, y = sm.fit_sample(X, y)
@@ -118,7 +119,7 @@ print(y_train.shape)
 print(X_test.shape)
 print(y_test.shape)
 
-# 'to_categorical' converts the class lebels to one-hot vectors. One-hot vector is nothing but dummifying in R.
+################ 'to_categorical' converts the class lebels to one-hot vectors ############################
 
 from keras.utils import to_categorical
 y_train = to_categorical(y_train)
@@ -172,7 +173,7 @@ classifier_model.compile(loss='binary_crossentropy',        # binary_CrossEntrop
               metrics=['accuracy'])                               # Mention the metric to be printed while training
               
               
-# Fitting the ANN to the Training set
+########################################## Fitting the ANN to the Training set ################################################
 
 classifier = classifier_model.fit(X_train, y_train, batch_size = 60, epochs = 15, validation_split = 0.3)
 
